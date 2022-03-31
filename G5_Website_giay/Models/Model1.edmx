@@ -1,0 +1,586 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OnlineShopShoesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="chitietDatHang">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="spID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="spID" Type="int" Nullable="false" />
+          <Property Name="soluong" Type="int" />
+        </EntityType>
+        <EntityType Name="khachHang">
+          <Key>
+            <PropertyRef Name="khID" />
+          </Key>
+          <Property Name="khID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TaxCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="50" />
+          <Property Name="Diachi" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LoaiSanPham">
+          <Key>
+            <PropertyRef Name="lspID" />
+          </Key>
+          <Property Name="lspID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lspName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="nvID" />
+          </Key>
+          <Property Name="nvID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar(max)" />
+          <Property Name="NgaySinh" Type="smalldatetime" />
+          <Property Name="GioiTinh" Type="bit" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="20" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NhaSanXuat">
+          <Key>
+            <PropertyRef Name="nhasanxuatID" />
+          </Key>
+          <Property Name="nhasanxuatID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nhasanxuatName" Type="nvarchar(max)" />
+          <Property Name="qgID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Orderpro">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="smalldatetime" />
+          <Property Name="khID" Type="int" />
+          <Property Name="nvID" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="QuocGia">
+          <Key>
+            <PropertyRef Name="qgID" />
+          </Key>
+          <Property Name="qgID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="qgName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="spID" />
+          </Key>
+          <Property Name="spID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="spName" Type="nvarchar(max)" />
+          <Property Name="spMieuta" Type="nvarchar(max)" />
+          <Property Name="spNgaySanXuat" Type="smalldatetime" />
+          <Property Name="lspID" Type="nvarchar" MaxLength="50" />
+          <Property Name="nhasanxuatID" Type="nvarchar" MaxLength="50" />
+          <Property Name="gia" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Images" Type="nvarchar" MaxLength="200" />
+          <Property Name="Size" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Manufacturer_Nation">
+          <End Role="QuocGia" Type="Self.QuocGia" Multiplicity="0..1" />
+          <End Role="NhaSanXuat" Type="Self.NhaSanXuat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuocGia">
+              <PropertyRef Name="qgID" />
+            </Principal>
+            <Dependent Role="NhaSanXuat">
+              <PropertyRef Name="qgID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Staff">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="Orderpro" Type="Self.Orderpro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="nvID" />
+            </Principal>
+            <Dependent Role="Orderpro">
+              <PropertyRef Name="nvID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Orderpro" Type="Self.Orderpro" Multiplicity="1" />
+          <End Role="chitietDatHang" Type="Self.chitietDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orderpro">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="chitietDatHang">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Product">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="chitietDatHang" Type="Self.chitietDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="spID" />
+            </Principal>
+            <Dependent Role="chitietDatHang">
+              <PropertyRef Name="spID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orderpro_Customer">
+          <End Role="khachHang" Type="Self.khachHang" Multiplicity="0..1" />
+          <End Role="Orderpro" Type="Self.Orderpro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachHang">
+              <PropertyRef Name="khID" />
+            </Principal>
+            <Dependent Role="Orderpro">
+              <PropertyRef Name="khID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Manufacturer">
+          <End Role="NhaSanXuat" Type="Self.NhaSanXuat" Multiplicity="0..1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaSanXuat">
+              <PropertyRef Name="nhasanxuatID" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="nhasanxuatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Type">
+          <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiSanPham">
+              <PropertyRef Name="lspID" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="lspID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OnlineShopShoesModelStoreContainer">
+          <EntitySet Name="chitietDatHang" EntityType="Self.chitietDatHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khachHang" EntityType="Self.khachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaSanXuat" EntityType="Self.NhaSanXuat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orderpro" EntityType="Self.Orderpro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuocGia" EntityType="Self.QuocGia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Manufacturer_Nation" Association="Self.FK_Manufacturer_Nation">
+            <End Role="QuocGia" EntitySet="QuocGia" />
+            <End Role="NhaSanXuat" EntitySet="NhaSanXuat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Staff" Association="Self.FK_Order_Staff">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="Orderpro" EntitySet="Orderpro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Orderpro" EntitySet="Orderpro" />
+            <End Role="chitietDatHang" EntitySet="chitietDatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Product" Association="Self.FK_OrderDetail_Product">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="chitietDatHang" EntitySet="chitietDatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orderpro_Customer" Association="Self.FK_Orderpro_Customer">
+            <End Role="khachHang" EntitySet="khachHang" />
+            <End Role="Orderpro" EntitySet="Orderpro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Manufacturer" Association="Self.FK_Product_Manufacturer">
+            <End Role="NhaSanXuat" EntitySet="NhaSanXuat" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Type" Association="Self.FK_Product_Type">
+            <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnlineShopShoesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="chitietDatHang">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="spID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="spID" Type="Int32" Nullable="false" />
+          <Property Name="soluong" Type="Int32" />
+          <NavigationProperty Name="Orderpro" Relationship="Self.FK_OrderDetail_Order" FromRole="chitietDatHang" ToRole="Orderpro" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK_OrderDetail_Product" FromRole="chitietDatHang" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="khachHang">
+          <Key>
+            <PropertyRef Name="khID" />
+          </Key>
+          <Property Name="khID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaxCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orderproes" Relationship="Self.FK_Orderpro_Customer" FromRole="khachHang" ToRole="Orderpro" />
+        </EntityType>
+        <EntityType Name="LoaiSanPham">
+          <Key>
+            <PropertyRef Name="lspID" />
+          </Key>
+          <Property Name="lspID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lspName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SanPhams" Relationship="Self.FK_Product_Type" FromRole="LoaiSanPham" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="nvID" />
+          </Key>
+          <Property Name="nvID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="Boolean" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orderproes" Relationship="Self.FK_Order_Staff" FromRole="NhanVien" ToRole="Orderpro" />
+        </EntityType>
+        <EntityType Name="NhaSanXuat">
+          <Key>
+            <PropertyRef Name="nhasanxuatID" />
+          </Key>
+          <Property Name="nhasanxuatID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nhasanxuatName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qgID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="QuocGia" Relationship="Self.FK_Manufacturer_Nation" FromRole="NhaSanXuat" ToRole="QuocGia" />
+          <NavigationProperty Name="SanPhams" Relationship="Self.FK_Product_Manufacturer" FromRole="NhaSanXuat" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="Orderpro">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="khID" Type="Int32" />
+          <Property Name="nvID" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="chitietDatHangs" Relationship="Self.FK_OrderDetail_Order" FromRole="Orderpro" ToRole="chitietDatHang" />
+          <NavigationProperty Name="khachHang" Relationship="Self.FK_Orderpro_Customer" FromRole="Orderpro" ToRole="khachHang" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK_Order_Staff" FromRole="Orderpro" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="QuocGia">
+          <Key>
+            <PropertyRef Name="qgID" />
+          </Key>
+          <Property Name="qgID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="qgName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhaSanXuats" Relationship="Self.FK_Manufacturer_Nation" FromRole="QuocGia" ToRole="NhaSanXuat" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="spID" />
+          </Key>
+          <Property Name="spID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="spName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="spMieuta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="spNgaySanXuat" Type="DateTime" Precision="0" />
+          <Property Name="lspID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nhasanxuatID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gia" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Size" Type="Int32" />
+          <NavigationProperty Name="chitietDatHangs" Relationship="Self.FK_OrderDetail_Product" FromRole="SanPham" ToRole="chitietDatHang" />
+          <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK_Product_Type" FromRole="SanPham" ToRole="LoaiSanPham" />
+          <NavigationProperty Name="NhaSanXuat" Relationship="Self.FK_Product_Manufacturer" FromRole="SanPham" ToRole="NhaSanXuat" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Orderpro" Type="Self.Orderpro" Multiplicity="1" />
+          <End Role="chitietDatHang" Type="Self.chitietDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orderpro">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="chitietDatHang">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Product">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="chitietDatHang" Type="Self.chitietDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="spID" />
+            </Principal>
+            <Dependent Role="chitietDatHang">
+              <PropertyRef Name="spID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orderpro_Customer">
+          <End Role="khachHang" Type="Self.khachHang" Multiplicity="0..1" />
+          <End Role="Orderpro" Type="Self.Orderpro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachHang">
+              <PropertyRef Name="khID" />
+            </Principal>
+            <Dependent Role="Orderpro">
+              <PropertyRef Name="khID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Type">
+          <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiSanPham">
+              <PropertyRef Name="lspID" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="lspID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Staff">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="Orderpro" Type="Self.Orderpro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="nvID" />
+            </Principal>
+            <Dependent Role="Orderpro">
+              <PropertyRef Name="nvID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_Nation">
+          <End Role="QuocGia" Type="Self.QuocGia" Multiplicity="0..1" />
+          <End Role="NhaSanXuat" Type="Self.NhaSanXuat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuocGia">
+              <PropertyRef Name="qgID" />
+            </Principal>
+            <Dependent Role="NhaSanXuat">
+              <PropertyRef Name="qgID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Manufacturer">
+          <End Role="NhaSanXuat" Type="Self.NhaSanXuat" Multiplicity="0..1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaSanXuat">
+              <PropertyRef Name="nhasanxuatID" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="nhasanxuatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OnlineShopShoesEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="chitietDatHangs" EntityType="Self.chitietDatHang" />
+          <EntitySet Name="khachHangs" EntityType="Self.khachHang" />
+          <EntitySet Name="LoaiSanPhams" EntityType="Self.LoaiSanPham" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="NhaSanXuats" EntityType="Self.NhaSanXuat" />
+          <EntitySet Name="Orderproes" EntityType="Self.Orderpro" />
+          <EntitySet Name="QuocGias" EntityType="Self.QuocGia" />
+          <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Orderpro" EntitySet="Orderproes" />
+            <End Role="chitietDatHang" EntitySet="chitietDatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Product" Association="Self.FK_OrderDetail_Product">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="chitietDatHang" EntitySet="chitietDatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orderpro_Customer" Association="Self.FK_Orderpro_Customer">
+            <End Role="khachHang" EntitySet="khachHangs" />
+            <End Role="Orderpro" EntitySet="Orderproes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Type" Association="Self.FK_Product_Type">
+            <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Staff" Association="Self.FK_Order_Staff">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="Orderpro" EntitySet="Orderproes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_Nation" Association="Self.FK_Manufacturer_Nation">
+            <End Role="QuocGia" EntitySet="QuocGias" />
+            <End Role="NhaSanXuat" EntitySet="NhaSanXuats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Manufacturer" Association="Self.FK_Product_Manufacturer">
+            <End Role="NhaSanXuat" EntitySet="NhaSanXuats" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OnlineShopShoesModelStoreContainer" CdmEntityContainer="OnlineShopShoesEntities4">
+          <EntitySetMapping Name="chitietDatHangs">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.chitietDatHang">
+              <MappingFragment StoreEntitySet="chitietDatHang">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="spID" ColumnName="spID" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khachHangs">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.khachHang">
+              <MappingFragment StoreEntitySet="khachHang">
+                <ScalarProperty Name="khID" ColumnName="khID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiSanPhams">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.LoaiSanPham">
+              <MappingFragment StoreEntitySet="LoaiSanPham">
+                <ScalarProperty Name="lspID" ColumnName="lspID" />
+                <ScalarProperty Name="lspName" ColumnName="lspName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="nvID" ColumnName="nvID" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaSanXuats">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.NhaSanXuat">
+              <MappingFragment StoreEntitySet="NhaSanXuat">
+                <ScalarProperty Name="nhasanxuatID" ColumnName="nhasanxuatID" />
+                <ScalarProperty Name="nhasanxuatName" ColumnName="nhasanxuatName" />
+                <ScalarProperty Name="qgID" ColumnName="qgID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orderproes">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.Orderpro">
+              <MappingFragment StoreEntitySet="Orderpro">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="khID" ColumnName="khID" />
+                <ScalarProperty Name="nvID" ColumnName="nvID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuocGias">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.QuocGia">
+              <MappingFragment StoreEntitySet="QuocGia">
+                <ScalarProperty Name="qgID" ColumnName="qgID" />
+                <ScalarProperty Name="qgName" ColumnName="qgName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanPhams">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.SanPham">
+              <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="spID" ColumnName="spID" />
+                <ScalarProperty Name="spName" ColumnName="spName" />
+                <ScalarProperty Name="spMieuta" ColumnName="spMieuta" />
+                <ScalarProperty Name="spNgaySanXuat" ColumnName="spNgaySanXuat" />
+                <ScalarProperty Name="lspID" ColumnName="lspID" />
+                <ScalarProperty Name="nhasanxuatID" ColumnName="nhasanxuatID" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OnlineShopShoesModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

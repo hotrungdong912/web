@@ -1,0 +1,52 @@
+﻿@model IEnumerable<G5_Website_giay.Models.Orderpro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+           ID
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            CustomerID
+        </th>
+        <th>
+            StaffID
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.khID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.OrderID  }) |
+            @Html.ActionLink("Details", "Details", new { id = item.OrderID }) 
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,25 @@
+﻿@model G5_Website_giay.Models.khachHang
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout -Login.cshtml";
+}
+
+
+<div class="login">
+    <form action="" method="post" onsubmit="return CheckData();">
+        <div class="col-3">
+            <label class="form-label">User Name</label>
+            <input class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="col-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control">
+        </div>
+        <div class="col-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

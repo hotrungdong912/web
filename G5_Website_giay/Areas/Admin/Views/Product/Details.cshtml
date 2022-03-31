@@ -1,0 +1,83 @@
+﻿@model G5_Website_giay.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spID)
+        </dd>
+
+        <dt>
+           Name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spName)
+        </dd>
+
+        <dt>
+            Describe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spMieuta)
+        </dd>
+
+        <dt>
+           Date:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spNgaySanXuat)
+        </dd>
+
+        <dt>
+           Type:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lspID)
+        </dd>
+
+        <dt>
+           Brand:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nhasanxuatID)
+        </dd>
+
+        <dt>
+           Price:
+        </dt>
+
+        <dd>
+            @{var price = String.Format("{0:0,0 đ}", Model.gia); }
+            @price
+        </dd>
+
+        <dt>
+           Image:
+        </dt>
+
+        <dd>
+            <img src="~/Content/staff/@Model.Images" width="400" height="250" />
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.spID  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

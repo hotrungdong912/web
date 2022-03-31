@@ -1,0 +1,38 @@
+﻿@model IEnumerable<G5_Website_giay.Models.QuocGia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           NationID
+        </th>
+        <th>
+            Nation
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.qgID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qgName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.qgID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.qgID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.qgID })
+        </td>
+    </tr>
+}
+
+</table>

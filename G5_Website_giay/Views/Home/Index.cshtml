@@ -1,0 +1,43 @@
+﻿@model PagedList.IPagedList<G5_Website_giay.Models.SanPham>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout-Index.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        @{ string id = " ";}
+        <br />   
+        @foreach (var item in Model)
+        {
+            id = ViewBag.id;
+            <div class="col-4">
+                <div class="myitem">
+                    <div class="image-on col-12">
+                        <a href="~/Home/Details?id=@item.spID">
+                            <div>
+                                <img class="hinh" style="width : 100%" src="~/Content/image/@item.Images" alt="Alternate Text" />
+                            </div>
+                            <div style="color:black">
+                                @{
+                                    @Html.DisplayFor(p => item.spName)
+                                }
+                            </div>
+                        </a>
+                    </div>
+                    <div style="color:#808080">
+                        @{
+                            var price = string.Format("{0:0,0 đ}", @item.gia);
+                            @price
+                        }
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+         }
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, id = id }))
+</div>

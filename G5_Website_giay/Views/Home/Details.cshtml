@@ -1,0 +1,55 @@
+﻿@model IEnumerable<G5_Website_giay.Models.SanPham>
+@{
+    ViewBag.Title = "N5|WE3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    @*<tr>      
+        <th>
+            @Html.DisplayNameFor(model => model.spName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.spMieuta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Images)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th></th>
+    </tr>*@
+
+@foreach (var item in Model) {
+    <tr>     
+        <td>
+            <br />
+            <br />
+            <br />
+            <br />
+            <h4>@Html.DisplayFor(modelItem => item.NhaSanXuat.nhasanxuatName)</h4>
+            <h2><b>@Html.DisplayFor(modelItem => item.spName)</b></h2>
+            @*@Html.DisplayFor(modelItem => item.spID)*@
+            @Html.DisplayFor(modelItem => item.spMieuta)
+            @{var price = String.Format("{0:0,0 đ}", item.gia); }
+            <h4>@price</h4>
+            <div class="d-grid gap-2 mx-auto">
+                <a href="~/Cart/AddItem?id=@item.spID">
+                    <button type="button" class="btn btn-outline-secondary">Add to cart</button>
+                </a>
+            </div>
+        </td>
+        <td>
+            <img src="~/Content/image/@item.Images" alt="Alternate Text" width="800" height="600" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>       
+    </tr>
+}
+
+</table>

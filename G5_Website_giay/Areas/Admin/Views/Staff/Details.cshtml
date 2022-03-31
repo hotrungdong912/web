@@ -1,0 +1,89 @@
+﻿@model G5_Website_giay.Models.NhanVien
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvID)
+        </dd>
+
+        <dt>
+           Full Name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+           Date of birth:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            Sex:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            Place:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Phone:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Image:
+        </dt>
+
+        <dd>
+            <img  src="~/Content/image/@Model.image" alt="Alternate Text" width="200" height="150" />
+        </dd>
+
+        <dt>
+            Username:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            Password:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.nvID  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

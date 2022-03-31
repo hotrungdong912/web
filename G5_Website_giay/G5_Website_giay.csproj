@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E9F598FF-7DB5-40B9-AE8A-34D6EAD97EA1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>G5_Website_giay</RootNamespace>
+    <AssemblyName>G5_Website_giay</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44374</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminLoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TypeProductController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cartItem.cs" />
+    <Compile Include="Models\chitietDatHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\endCode.cs" />
+    <Compile Include="Models\khachHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhanVien.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaSanXuat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Orderpro.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuocGia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\baners\baner.jpg" />
+    <Content Include="Content\baners\baner2.jpg" />
+    <Content Include="Content\baners\baner3.jpg" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\Adidas Alphaedge 4D Black _ Iridescent.jpg" />
+    <Content Include="Content\image\Adidas Alphaedge 4D Black _ Iridescent1.jpg" />
+    <Content Include="Content\image\adidas Dragon Ball Z x EQT Support Mid ADV Primeknit _Shenron.jpg" />
+    <Content Include="Content\image\ADIDAS DURAMO SL SLIDES CORE BLACK.jpg" />
+    <Content Include="Content\image\adidas Energy Cloud 2.jpg" />
+    <Content Include="Content\image\adidas Energy Cloud 21.jpg" />
+    <Content Include="Content\image\adidas Falcon W _Raw White.jpg" />
+    <Content Include="Content\image\adidas Falcon W _Raw White1.jpg" />
+    <Content Include="Content\image\adidas Falcon _True Pink.jpg" />
+    <Content Include="Content\image\adidas Falcon _True Pink1.jpg" />
+    <Content Include="Content\image\adidas Nite Jogger _ Star Wars R2D2.jpg" />
+    <Content Include="Content\image\adidas Nite Jogger _Star Wars R2D21.jpg" />
+    <Content Include="Content\image\ADIDAS NMD HU PHARRELL INSPIRATION PACK POWDER BLUE.jpg" />
+    <Content Include="Content\image\ADIDAS NMD HU TRAIL PHARRELL NOW IS HER TIME SOLAR YELLOW.jpg" />
+    <Content Include="Content\image\adidas Pharrell x NMD Human Race _Inspiration Pack.jpg" />
+    <Content Include="Content\image\adidas Pharrell x NMD Human Race _Inspiration Pack1.jpg" />
+    <Content Include="Content\image\adidas Prophere _Oreo Pack.jpg" />
+    <Content Include="Content\image\adidas Prophere _Oreo Pack1.jpg" />
+    <Content Include="Content\image\adidas Ultra Boost 4.0 _ White Black Boost.jpg" />
+    <Content Include="Content\image\adidas Ultra Boost 4.0 _ White Black Boost1.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 20 _Geometric Pack - Black Signal Orange.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 20 _Geometric Pack - Black Signal Orange1.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 20 _Geometric Pack - Black Signal Orange11.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 20 _Triple Black.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 20 _Triple Black1.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 20 _White Signal Pink.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 20 _White Signal Pink1.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 20 _White Signal Pink11.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 2020 _Gold Metallic.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 2020 _Gold Metallic1.jpg" />
+    <Content Include="Content\image\adidas UltraBoost 2020 _Gold Metallic11.jpg" />
+    <Content Include="Content\image\adidas X_PLR J _Icey Pink.jpg" />
+    <Content Include="Content\image\adidas X_PLR J _Icey Pink1.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY 500 ENFLAME.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY BOOST 350 V2 BRED.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY BOOST 350 V2 ISRAFIL.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY BOOST 350 V2 SESAME - F99710.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY BOOST 700 V2 %27CREAM%27.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY FOAM RNNR MINERAL BLUE.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY FOAM RUNNER %27SAND%27.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY QUANTUM BARIUM.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY QUANTUM BARIUM1.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY SLIDES RESIN 2021.jpg" />
+    <Content Include="Content\image\ADIDAS YEEZY SLIDES RESIN 20211.jpg" />
+    <Content Include="Content\image\adidas Yung-1 _Chalk White.jpg" />
+    <Content Include="Content\image\adidas Yung-1 _Hi-Res Orange.jpg" />
+    <Content Include="Content\image\adidas Yung-1_Hi-Res Orange1.jpg" />
+    <Content Include="Content\image\ADIDAS ZX 8000 SEAN WOTHERSPOON SUPEREARTH.jpg" />
+    <Content Include="Content\image\Air Force 1 LV8 GS _Digital Swoosh.jpg" />
+    <Content Include="Content\image\Air Force 1 LV8 GS _Digital Swoosh1.jpg" />
+    <Content Include="Content\image\AIR FORCE 1&amp;1 GS WHITE.jpg" />
+    <Content Include="Content\image\AIR FORCE 1&amp;1 GS WHITE1.jpg" />
+    <Content Include="Content\image\AIR FORCE 1-1 GS WHITE.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 HIGH ZOOM AIR CMFT BLACK MONARCH.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW BLACK SIREN RED %28W%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW GS FUNKY PATTERNS.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW GS WHITE VIOLET SHOCK.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW GYM RED WHITE.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW REVERSE BLACK RED.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW SE ALL-STAR 2021.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW SE “ACTIVE FUCHSIA”.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW TRIPLE WHITE TUMBLED LEATHER.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW TRIPLE WHITE TUMBLED LEATHER1.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW UNIVERSITY GOLD.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 LOW WHITE UNIVERSITY RED %28W%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID %27MILAN%27.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID %27MILAN%271.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID BANNED 2020.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID BANNED 20201.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID BLACK CHILE RED WHITE.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID CHICAGO 2020 %28GS%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID CRIMSON TINT.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID DUTCH GREEN %28W%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID GS %27CHICAGO BLACK TOE%27.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID GS %27PASTEL%27.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID GS CHILE RED.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID GS WHITE GOLD.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID HYPER ROYAL %28GS%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID LASER BLUE.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID LASER ORANGE BLACK %28W%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID METALLIC RED.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID ROYAL 2020.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID SE ALL STAR 2021.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID SE GS %27TURF ORANGE%27.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID SE GS BLACK GLITTER.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID SE GS EDGE GLOW.jpg" />
+    <Content Include="Content\image\Air Jordan 1 Mid SE GS _ Ice Cream.png" />
+    <Content Include="Content\image\AIR JORDAN 1 MID SE SIGNAL BLUE.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID SE UNION BLACK TOE.jpg" />
+    <Content Include="Content\image\Air Jordan 1 Mid SE _ Multi Patent1.jpg" />
+    <Content Include="Content\image\Air Jordan 1 Mid SE _Multi Patent.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID SHATTERED BACKBOARD.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID TROPICAL TWIST.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID UNIVERSITY GOLD.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID WHITE BLACK GYM RED.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID WHITE SHADOW.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 MID WHITE SHADOW1.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH CO JAPAN MIDNIGHT NAVY %28GS%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH DARK MOCHA.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH DARK MOCHA1.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH HYPER ROYAL SMOKE GREY %28GS%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH OG %27PINE GREEN 2.0%27.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH OG %27SHADOW 2.0%27.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH OG %27VOLT GOLD%27.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH OG HYPER ROYAL.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH TIE DYE %28W%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 RETRO HIGH ZOOM WHITE RACER BLUE.jpg" />
+    <Content Include="Content\image\AIR JORDAN 1 ZOOM AIR CMFT PSG PARIS SAINT-GERMAIN.jpg" />
+    <Content Include="Content\image\AIR JORDAN 13 RETRO FLINT %282020%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 3 RETRO BLACK CEMENT.jpg" />
+    <Content Include="Content\image\AIR JORDAN 4 RETRO FIRE RED %282020%29.jpg" />
+    <Content Include="Content\image\AIR JORDAN 4 RETRO GS %27UNIVERSITY BLUE%27.jpg" />
+    <Content Include="Content\image\AIR JORDAN 4 RETRO SE 95 NEON.jpg" />
+    <Content Include="Content\image\AIR JORDAN 4 RETRO UNIVERSITY BLUE.jpg" />
+    <Content Include="Content\image\AIR JORDAN 4 RETRO UNIVERSITY BLUE1.jpg" />
+    <Content Include="Content\image\AIR JORDAN 4 RETRO UNIVERSITY BLUE2.jpg" />
+    <Content Include="Content\image\AIR JORDAN 4 RETRO UNIVERSITY BLUE3.jpg" />
+    <Content Include="Content\image\AIR JORDAN 5 RETRO TOP 3.jpg" />
+    <Content Include="Content\image\AIR JORDAN 6 RETRO OG CARMINE 2021.jpg" />
+    <Content Include="Content\image\AIR JORDAN BREAK SLIDES COOL GREY.jpg" />
+    <Content Include="Content\image\AIR MAX 90 OFF-WHITE DESERT ORE.jpg" />
+    <Content Include="Content\image\BAPE LOGO SLIP ON LADIES PINK.jpg" />
+    <Content Include="Content\image\CHINATOWN MARKET X BIG SMILEY SWEATPANT.jpg" />
+    <Content Include="Content\image\CHROME HEARTS LEGGINGS PANTS BLACK.jpg" />
+    <Content Include="Content\image\CHROME HEARTS LEGGINGS PANTS.jpg" />
+    <Content Include="Content\image\CHROME HEARTS SWEATPANT GREY OREO.jpg" />
+    <Content Include="Content\image\COMME DES GARÇONS HOMME PLUS X NIKE AIR PRESTO FOOT TENT %27SKYLIGHT%27.jpg" />
+    <Content Include="Content\image\Converse Chuck 1970 Hi _Sunflower.jpg" />
+    <Content Include="Content\image\Converse Chuck 1970 Hi _Sunflower11.jpg" />
+    <Content Include="Content\image\Converse Chuck 1970 Hi _Sunflower111.jpg" />
+    <Content Include="Content\image\Converse Chuck 1970 Low _ Sunflower 1.jpg" />
+    <Content Include="Content\image\Converse Chuck 1970 Low _ Sunflower 11.jpg" />
+    <Content Include="Content\image\Converse Chuck 1970 Low _ Sunflower.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Low Top 1970.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Low Top 19701.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Low _Optical White.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Low _Optical White1.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Low _Optical White11.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Low _Optical White111.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Ox _Black.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Ox _Black1.jpg" />
+    <Content Include="Content\image\Converse Chuck Taylor All Star Ox _Black11.jpg" />
+    <Content Include="Content\image\CONVERSE JAPAN ALL-STAR LIGHT CLEAR MATERIAL HI PINK.jpg" />
+    <Content Include="Content\image\CROCS CLASSIC CLOG BIEBER WITH DREW HOUSE.jpg" />
+    <Content Include="Content\image\CROCS CLASSIC CLOG BIEBER WITH DREW HOUSE1.jpg" />
+    <Content Include="Content\image\CROCS CLASSIC CLOG JUSTIN BIEBER WITH DREW HOUSE 2 LAVENDER.jpg" />
+    <Content Include="Content\image\FEAR OF GOD ESSENTIALS SAGE REFLECTIVE LOUNGE SWEATPANTS.jpg" />
+    <Content Include="Content\image\JORDAN WHY NOT ZER0.3 SE SPRUCE AURA FLASH CRIMSON.jpg" />
+    <Content Include="Content\image\JORDAN WOVEN PANTS X OFF-WHITE.jpg" />
+    <Content Include="Content\image\K NIKE AIR JORDAN 1 MID CHICAGO REMIX1.jpg" />
+    <Content Include="Content\image\K NIKE AIR JORDAN 1 MID _CHICAGO REMIX.jpg" />
+    <Content Include="Content\image\K NIKE AIR MAX 90 WHITE LASER ORANGE AURORA.jpg" />
+    <Content Include="Content\image\LEVI IS X GOLF WANG POLKA DOT JEANS IVORY.jpg" />
+    <Content Include="Content\image\M ADIDAS ULTRABOOST 19 STAR WARS.jpg" />
+    <Content Include="Content\image\M ADIDAS ULTRABOOST 19 STAR WARS1.jpg" />
+    <Content Include="Content\image\M NIKE AIR JORDAN 31 LOW PURE MONEY.jpg" />
+    <Content Include="Content\image\M NIKE AIR JORDAN 4 MOTOR SPORT.jpg" />
+    <Content Include="Content\image\M NIKE AIR JORDAN 4 MOTOR SPORT1.jpg" />
+    <Content Include="Content\image\M NIKE AIR JORDAN SUPERFLY 4 PO CHINESE NEW YEAR.jpg" />
+    <Content Include="Content\image\M NIKE AIR JORDAN _1_LOW NOBLE RED WHITE&amp;NOBLE RED.jpg" />
+    <Content Include="Content\image\M NIKE AIR MAX 90 WHITE&amp;WHITE-PARTICLE GREY.jpg" />
+    <Content Include="Content\image\M NIKE AIR MAX 90 WHITE&amp;WHITE-PARTICLE GREY1.jpg" />
+    <Content Include="Content\image\M NIKE JORDAN HYDRO XI WHITE NAVY.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 %2707 GS SWOOSHFETTI.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 %2707 WHITE BLACK GS.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 GS WHITE BLACK STITCH.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 LOW 07 LV SASHIKO %28W%29.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 LOW 07 LV SASHIKO %28W%291.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 LOW ALL WHITE.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 LOW PINK IRIDESCENT %28W%29.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 SHADOW PHOTON DUST CRIMSON TINT %28W%29.jpg" />
+    <Content Include="Content\image\NIKE AIR FORCE 1 SHADOW WHITE MAGIC FLAMINGO %28W%29.jpg" />
+    <Content Include="Content\image\NIKE AIR JORDAN 1 RETRO HIGH OG GS %27PINE GREEN%27.jpg" />
+    <Content Include="Content\image\NIKE AIR JORDAN 1 ZOOM COMFORT STADIUM GREEN.jpg" />
+    <Content Include="Content\image\NIKE AIR MAX 90 ESSENTIAL %27GREY FUCHSIA%27.jpg" />
+    <Content Include="Content\image\NIKE AIR MAX 90 NATURAL CHILI RED.jpg" />
+    <Content Include="Content\image\Nike Air Max 90 SE %27Worldwide Pack - Blue Fury Volt.jpg" />
+    <Content Include="Content\image\Nike Air Max 90 SE %27Worldwide Pack - Blue Fury Volt1.jpg" />
+    <Content Include="Content\image\Nike Air Monarch IV Black Blue.png" />
+    <Content Include="Content\image\Nike Air Monarch IV _ Black Blue.jpg" />
+    <Content Include="Content\image\NIKE AIR MORE UPTEMPO %27BULLS%27 2021.jpg" />
+    <Content Include="Content\image\NIKE ASUNA SLIDE PAISLEY.jpg" />
+    <Content Include="Content\image\NIKE BENASSI HAVE A NIKE DAY BLACK&amp; WHITE.jpg" />
+    <Content Include="Content\image\NIKE BENASSI HAVE A NIKE DAY BLACK-WHITE.jpg" />
+    <Content Include="Content\image\NIKE BENASSI JDI PRINT RED WHITE BLACK.jpg" />
+    <Content Include="Content\image\NIKE BENASSI STUSSY PINE GREEN.jpg" />
+    <Content Include="Content\image\NIKE BLAZER MID %2777 VINTAGE WHITE BLACK.jpg" />
+    <Content Include="Content\image\NIKE BLAZER MID INFINITE WHITE KUMQUAT.jpg" />
+    <Content Include="Content\image\NIKE DUNK HIGH MICHIGAN %282020%29.jpg" />
+    <Content Include="Content\image\NIKE DUNK HIGH MICHIGAN %282020%291.jpg" />
+    <Content Include="Content\image\NIKE DUNK HIGH SB %27TV SIGNAL%27.jpg" />
+    <Content Include="Content\image\NIKE DUNK HIGH SP GS %27SYRACUSE%27 2021.jpg" />
+    <Content Include="Content\image\NIKE DUNK HIGH SYRACUSE %282021%29.jpg" />
+    <Content Include="Content\image\NIKE DUNK LOW FREE 99 WHITE.jpg" />
+    <Content Include="Content\image\NIKE DUNK LOW FREE 99 WHITE1.jpg" />
+    <Content Include="Content\image\NIKE DUNK LOW RETRO WHITE BLACK %282021%29.jpg" />
+    <Content Include="Content\image\NIKE DUNK LOW SB X WASTED YOUTH %27BLACK DENIM%27.jpg" />
+    <Content Include="Content\image\Nike G-Dragon x Air Force 1 _07 _Para-noise.jpg" />
+    <Content Include="Content\image\Nike G-Dragon x Air Force 1 _07 _Para-noise1.jpg" />
+    <Content Include="Content\image\NIKE KYBRID S2 CARGO KHAKI.jpg" />
+    <Content Include="Content\image\NIKE KYRIE 6 EP USA.jpg" />
+    <Content Include="Content\image\NIKE KYRIE 6 TEAM %27WOLF GREY%27.jpg" />
+    <Content Include="Content\image\NIKE KYRIE 6 TEAM BLACK WHITE.jpg" />
+    <Content Include="Content\image\NIKE KYRIE 6 TEAM WHITE BLACK.jpg" />
+    <Content Include="Content\image\NIKE KYRIE 7 BLACK WHITE.jpg" />
+    <Content Include="Content\image\NIKE LD WAFFLE SACAI BLACK.jpg" />
+    <Content Include="Content\image\NIKE OFFCOURT SLIDE BLACK.jpg" />
+    <Content Include="Content\image\NIKE SACAI X VAPORWAFFLE DARK IRIS.jpg" />
+    <Content Include="Content\image\NIKE WMNS AIR FORCE 1 SHADOW %27BARELY GREEN CRIMSON TINT%27.jpg" />
+    <Content Include="Content\image\NIKE WMNS AIR FORCE 1 SHADOW SE SOLAR FLARE ATOMIC PINK.jpg" />
+    <Content Include="Content\image\NIKE WMNS AIR FORCE 1 SHADOW WHITE ELECTRIC GREEN.jpg" />
+    <Content Include="Content\image\NIKE WMNS BENASSI JDI FLORAL BLACK-WHITE.jpg" />
+    <Content Include="Content\image\NIKE WMNS DUNK LOW PHOTON DUST.jpg" />
+    <Content Include="Content\image\NIKE ZOOM FREAK 2 NRG CRIMSON FIRE PINK.jpg" />
+    <Content Include="Content\image\PACSUN DENIM FEAR OF GOD.jpg" />
+    <Content Include="Content\image\STUSSY CHECK WORK PANT.jpg" />
+    <Content Include="Content\image\STUSSY HEAVY BIG OL GOLD JEANS.jpg" />
+    <Content Include="Content\image\SUPREME BLOCKS SWEATPANT MULTICOLOR.jpg" />
+    <Content Include="Content\image\SUPREME DRAGON PANTS - RED.jpg" />
+    <Content Include="Content\image\SUPREME SMURFS REGULAR JEAN BLUE.jpg" />
+    <Content Include="Content\image\SUPREME WAVES WORK JEANS MULTICOLOR.jpg" />
+    <Content Include="Content\image\SUPREME X NIKE DUNK LOW OG SB QS BLACK.jpg" />
+    <Content Include="Content\image\TRAVIS SCOTT X AIR JORDAN 6 RETRO BRITISH KHAKI.jpg" />
+    <Content Include="Content\image\TRAVIS SCOTT X AIR JORDAN 6 RETRO BRITISH KHAKI1.jpg" />
+    <Content Include="Content\image\TRAVIS SCOTT X AIR JORDAN 6 RETRO BRITISH KHAKI11.jpg" />
+    <Content Include="Content\image\TRAVIS SCOTT X AIR JORDAN 6 RETRO BRITISH KHAKI111.jpg" />
+    <Content Include="Content\image\TRAVIS SCOTT X AIR JORDAN 6 RETRO TD BRITISH KHAKI.jpg" />
+    <Content Include="Content\image\Ultra Boost 1.0 _Multi-Color Toe.jpg" />
+    <Content Include="Content\image\Ultra Boost 1.0 _Multi-Color Toe1.jpg" />
+    <Content Include="Content\image\Ultra Boost 1.0 _Multi-Color Toe11.jpg" />
+    <Content Include="Content\image\Ultra boost 2020 ISS US National Lab Core White.jpg" />
+    <Content Include="Content\image\Ultra Boost 4.0 W _GAME OF THRONES HOUSE OF LANNISTER.jpg" />
+    <Content Include="Content\image\Ultra Boost 4.0 W _GAME OF THRONES HOUSE OF LANNISTER1.jpg" />
+    <Content Include="Content\image\W ADIDAS SUPERSTAR CLOUD WHITE&amp;CORE BLACK.jpg" />
+    <Content Include="Content\image\W ADIDAS SUPERSTAR CLOUD WHITE&amp;CORE BLACK1.jpg" />
+    <Content Include="Content\image\W ADIDAS SUPERSTAR CLOUD WHITE&amp;CORE BLACK11.jpg" />
+    <Content Include="Content\image\W AIR JORDAN 1 MID GOLD PENDANTS  BLACK&amp;DARK BEETROT.jpg" />
+    <Content Include="Content\image\WMNS AIR JORDAN 1 HIGH ZOOM COMFORT %27EASTER%27.jpg" />
+    <Content Include="Content\image\WMNS AIR JORDAN 1 LOW PANDA.jpg" />
+    <Content Include="Content\image\WMNS AIR JORDAN 1 LOW UNC.jpg" />
+    <Content Include="Content\image\WMNS AIR JORDAN 1 MID APRICOT.jpg" />
+    <Content Include="Content\image\WMNS AIR JORDAN 1 MID SUEDE CHICAGO.jpg" />
+    <Content Include="Content\image\WMNS AIR JORDAN 1 MID SUEDE CHICAGO1.jpg" />
+    <Content Include="Content\image\WMNS AIR JORDAN 1 MID WHITE SNAKESKIN.jpg" />
+    <Content Include="Content\image\WMNS AIR MAX 90 RECRAFT %27HYPER GRAPE%27.jpg" />
+    <Content Include="Content\image\WMNS NIKE AIR FORCE 1 LOW LX %27REVEAL%27.jpg" />
+    <Content Include="Content\image\WMNS NIKE AIR FORCE 1 LOW LX %27REVEAL%271.jpg" />
+    <Content Include="Content\image\WMNS NIKE DUNK HIGH %27FOOTBALL GREY%27.jpg" />
+    <Content Include="Content\login\cart.png" />
+    <Content Include="Content\login\login.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandProduct\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandProduct\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandProduct\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandProduct\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandProduct\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Nation\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Nation\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Nation\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Nation\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Nation\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TypeProduct\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TypeProduct\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TypeProduct\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TypeProduct\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TypeProduct\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout -adminlogin.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLogin\Index.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Home\HistoryOrder.cshtml" />
+    <Content Include="Views\Home\Details2.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Shared\_Layout-Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout -Login.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Content\staff\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61204</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44374/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

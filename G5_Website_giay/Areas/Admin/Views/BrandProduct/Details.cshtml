@@ -1,0 +1,32 @@
+﻿@model G5_Website_giay.Models.NhaSanXuat
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Brand:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nhasanxuatName)
+        </dd>
+
+        <dt>
+            NationID:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qgID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.nhasanxuatID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

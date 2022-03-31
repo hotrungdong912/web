@@ -1,0 +1,68 @@
+﻿@model IEnumerable<G5_Website_giay.Models.cartItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model == null)
+{
+    <div>Your cart is empty</div>
+}
+else
+{
+    int count = 1;
+    <table class="table">
+        <tr>
+            <th>Order Number</th>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Images</th>
+            <th>Price</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+        @{ double total = 0;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@count @{count++;} </td>
+                <td>@item.SanPham.spID</td>
+                <td>@item.SanPham.spName</td>
+                <td><img src="~/Content/image/@item.SanPham.Images" width="100"</td>
+                <td>@{var price = String.Format("{0:0,0 đ}", @item.SanPham.gia);}@price</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @{var money = String.Format("{0:0,0 đ}", @item.SanPham.gia * item.Quantity); }
+                    @{ total = total + (double)(item.SanPham.gia * item.Quantity); }
+                    @money
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SanPham.spID })
+                </td>
+            </tr>
+        }
+        <tr class="text-right">
+            <td colspan="7">
+                <div style="color: red">
+                    @{var totalmoney = String.Format("{0:0,0 đ}", total); }
+                    Total money: @totalmoney
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="row text-right col align-self-end">
+        <a href="~/Cart/Order">
+            <button type="button" class="btn btn-outline-danger">Order</button>
+        </a>
+    </div>
+}
+

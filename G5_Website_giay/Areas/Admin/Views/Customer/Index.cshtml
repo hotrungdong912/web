@@ -1,0 +1,72 @@
+﻿@model IEnumerable<G5_Website_giay.Models.khachHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            TaxCode
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Place
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Username
+        </th>
+        <th>
+            Password
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.khID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaxCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diachi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PassWord)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.khID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.khID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.khID })
+        </td>
+    </tr>
+}
+
+</table>

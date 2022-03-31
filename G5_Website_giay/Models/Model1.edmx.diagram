@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6e0d167a2f247f2ad45c8b23880ecf7" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineShopShoesModel.chitietDatHang" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopShoesModel.khachHang" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopShoesModel.LoaiSanPham" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopShoesModel.NhanVien" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopShoesModel.NhaSanXuat" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopShoesModel.Orderpro" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopShoesModel.QuocGia" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopShoesModel.SanPham" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopShoesModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="OnlineShopShoesModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopShoesModel.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopShoesModel.FK_Orderpro_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopShoesModel.FK_Product_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopShoesModel.FK_Order_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopShoesModel.FK_Manufacturer_Nation" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopShoesModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

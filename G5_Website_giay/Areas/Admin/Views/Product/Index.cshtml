@@ -1,0 +1,69 @@
+﻿@model IEnumerable<G5_Website_giay.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@if(TempData["check"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+}
+<p>
+    @Html.ActionLink("Create New", "Create","Product")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           ID
+        </th>
+        <th>
+           Name
+        </th>
+        <th>
+           Describe
+        </th>
+        <th>
+           Date
+        </th>
+        <th>
+           Price
+        </th>
+        <th>
+           Image
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.spID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.spName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.spMieuta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.spNgaySanXuat)
+        </td>
+        <td>
+            @{var price = String.Format("{0:0,0đ}", item.gia); }
+            @price
+        </td>
+        <td>
+            <img  src="~/Content/image/@item.Images" alt="Alternate Text" width="180" height="150" />
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.spID  })
+            @Html.ActionLink("Details", "Details", new { id = item.spID })
+            @Html.ActionLink("Delete", "Delete", new { id = item.spID }) 
+        </td>
+    </tr>
+}
+
+</table>
